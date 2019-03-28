@@ -1,0 +1,5 @@
+#Ignoruoti visus nurodytus failus pagal pattern'a
+
+.idea
+*.iml
+target/
