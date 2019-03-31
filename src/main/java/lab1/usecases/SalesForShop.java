@@ -53,6 +53,6 @@ public class SalesForShop implements Serializable {
     public String createSale() {
         this.saleToCreate.setShop(this.shop);
         salesDAO.persist(saleToCreate);
-        return "/courses?faces-redirect=true&teacherId=" + this.shop.getId();
+        return "/sales?faces-redirect=true&shopId=" + this.shop.getId();
     }
 }

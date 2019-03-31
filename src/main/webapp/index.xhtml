@@ -56,20 +56,20 @@
     <h:form id="shopForm">
         <div>
             <h:outputLabel for="shopName" value="Name: "/>
-            <h:inputText id="shopName" value="#{shops.shopToCreate.name}" required="true"/>
+            <h:inputText id="shopName" value="#{shopsMyBatis.shopToCreate.name}" required="true"/>
             <h:message for="shopName" style="color: red"/>
         </div>
         <div>
             <h:outputLabel for="shopNumber" value="Number: "/>
-            <h:inputText id="shopNumber" value="#{shops.shopToCreate.shopNo}" required="true"/>
+            <h:inputText id="shopNumber" value="#{shopsMyBatis.shopToCreate.shopNo}" required="true"/>
             <h:message for="shopNumber" style="color: red"/>
         </div>
         <div>
             <h:outputLabel for="shopAddress" value="Address: "/>
-            <h:inputText id="shopAddress" value="#{shops.shopToCreate.address}" required="true"/>
+            <h:inputText id="shopAddress" value="#{shopsMyBatis.shopToCreate.address}" required="true"/>
             <h:message for="shopAddress" style="color: red"/>
         </div>
-        <h:commandButton value="Add new shop" action="#{shops.createShop}"/>
+        <h:commandButton value="Add new shop" action="#{shopsMyBatis.createShop}"/>
     </h:form>
 
     <h2>Customers:</h2>

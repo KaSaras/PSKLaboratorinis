@@ -13,7 +13,7 @@
         <!-- <javaClientGenerator type="ANNOTATEDMAPPER"
                              targetPackage="lt.vu.usecases.mybatis.dao"
                              targetProject="MAVEN" /> -->
-        <sqlMapGenerator targetPackage="lab1.mybatis.xml" targetProject="MAVEN"/>
+        <sqlMapGenerator targetPackage="lab1.xml" targetProject="MAVEN"/>
         <javaClientGenerator type="XMLMAPPER" targetPackage="lab1.mybatis.dao"
                              targetProject="MAVEN"/>
 
