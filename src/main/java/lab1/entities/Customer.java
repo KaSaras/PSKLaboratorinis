@@ -15,7 +15,7 @@ import java.util.List;
 })
 @Table(name = "Customer")
 @Getter @Setter
-@EqualsAndHashCode(of = { "customerNo" } )
+@EqualsAndHashCode(of = { "personalCode" } )
 public class Customer implements Serializable {
 
     public Customer() {
@@ -36,6 +36,6 @@ public class Customer implements Serializable {
     private int personalCode;
 
     @ManyToMany
-    @JoinTable(name = "Sales")
+    @JoinTable(name = "CUSTOMER_SALE")
     private List<Sale> sales = new ArrayList<>();
 }

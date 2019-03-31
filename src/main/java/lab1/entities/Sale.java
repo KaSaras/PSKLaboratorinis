@@ -4,10 +4,9 @@ package lab1.entities;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.ibatis.annotations.Many;
-import javax.validation.constraints.Size;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,18 +31,19 @@ public class Sale implements Serializable {
     @Column(name = "ID")
     private  Integer id;
 
+    @Size(max = 50)
+    @Column(name = "SALE_STATUS")
+    private String status;
 
     @Column(name ="SALE_CODE", nullable = false, unique = true)
     private String saleCode;
 
+    @ManyToOne
+    @JoinColumn(name = "SHOP_ID")
+    private Shop shop;
+
     @ManyToMany(mappedBy = "sales")
     private List<Customer> customers = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "sales")
-    private List<Shop> shops = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "ITEM_ID")
-    private Item item;
 
 }

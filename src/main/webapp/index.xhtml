@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+
+<h:head><title>Java EE lab 1</title></h:head>
+
+<h:body>
+    <h2>Sales:</h2>
+    <ol>
+        <ui:repeat value="#{sales.allSales}" var="sale">
+            <li>
+                <span>
+                    #{sale.status} (#{sale.saleCode}) - sold by #{sale.shop.name} #{sale.shop.shopNo}
+                </span>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form id="saleForm">
+        <div>
+            <h:outputLabel for="saleStatus" value="Sale Status: "/>
+            <h:inputText id="saleStatus" value="#{sales.saleToCreate.status}" required="true"/>
+            <h:message for="saleStatus" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="saleCode" value="Sale code: "/>
+            <h:inputText id="saleCode" value="#{sales.saleToCreate.saleCode}" required="true"/>
+            <h:message for="saleCode" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="shop" value="Shop (No. and Name): "/>
+            <h:selectOneMenu id="shop" value="#{sales.saleToCreate.shop}"
+                             converter="omnifaces.SelectItemsConverter">
+                <f:selectItems
+                        value="#{shops.allShops}"
+                        var="shop" itemValue="#{shop}"
+                        itemLabel="#{shop.shopNo} #{shop.name}"/>
+            </h:selectOneMenu>
+            <h:message for="shop" style="color: red"/>
+        </div>
+
+        <h:commandButton value="Add new sale" action="#{sales.createSale}"/>
+    </h:form>
+
+    <h2>Shops:</h2>
+    <ol>
+        <ui:repeat value="#{shops.allShops}" var="shop">
+            <li>
+                #{shop.name} #{shop.shopNo}
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form id="shopForm">
+        <div>
+            <h:outputLabel for="shopName" value="Name: "/>
+            <h:inputText id="shopName" value="#{shops.shopToCreate.name}" required="true"/>
+            <h:message for="shopName" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="shopNumber" value="Number: "/>
+            <h:inputText id="shopNumber" value="#{shops.shopToCreate.shopNo}" required="true"/>
+            <h:message for="shopNumber" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="shopAddress" value="Address: "/>
+            <h:inputText id="shopAddress" value="#{shops.shopToCreate.address}" required="true"/>
+            <h:message for="shopAddress" style="color: red"/>
+        </div>
+        <h:commandButton value="Add new shop" action="#{shops.createShop}"/>
+    </h:form>
+
+    <h2>Customers:</h2>
+    <ol>
+        <ui:repeat value="#{customers.allCustomers}" var="customer">
+            <li>
+                #{customer.name} #{customer.surname}
+                <ul>
+                    <ui:repeat value="#{customer.sales}" var="sale">
+                        <li>
+                            #{sale.saleCode} (#{sale.status})
+                        </li>
+                    </ui:repeat>
+                </ul>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form id="customerForm">
+        <div>
+            <h:outputLabel for="customerName" value="Name: "/>
+            <h:inputText id="customerName" value="#{customers.customerToCreate.name}" required="true"/>
+            <h:message for="customerName" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="customerSurname" value="Surname: "/>
+            <h:inputText id="customerSurname" value="#{customers.customerToCreate.surname}" required="true"/>
+            <h:message for="customerSurname" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="customerNo" value="No: "/>
+            <h:inputText id="customerNo" value="#{customers.customerToCreate.personalCode}" required="true"/>
+            <h:message for="customerNo" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="sales" value="Sales: "/>
+            <h:selectManyCheckbox id="sales" value="#{customers.customerToCreate.sales}"
+                                  converter="omnifaces.SelectItemsConverter">
+                <f:selectItems
+                        value="#{sales.allSales}"
+                        var="sale" itemValue="#{sale}"
+                        itemLabel="#{sale.status} (#{sale.saleCode})"/>
+            </h:selectManyCheckbox>
+            <h:message for="sales" style="color: red"/>
+        </div>
+
+        <h:commandButton value="Add new customer" action="#{customers.createCustomer}"/>
+    </h:form>
+</h:body>
+</html>
+

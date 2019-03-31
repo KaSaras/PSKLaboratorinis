@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="lab1.mybatis.model.Customer" alias="Customer"/>
+        <typeAlias type="lab1.mybatis.model.Shop" alias="Shop"/>
+        <typeAlias type="lab1.mybatis.model.Sale" alias="Sale"/>
+        <typeAlias type="lab1.mybatis.model.CustomerSale" alias="CustomerSale"/>
+
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="MANAGED"/>
+            <dataSource type="JNDI">
+                <property name="data_source" value="openejb:Resource/PurchasesDataSource"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis.xml/CustomerMapper.xml"/>
+        <mapper resource="mybatis.xml/ShopMapper.xml"/>
+        <mapper resource="mybatis.xml/SaleMapper.xml"/>
+        <mapper resource="mybatis.xml/CustomerSaleMapper.xml"/>
+    </mappers>
+</configuration>
