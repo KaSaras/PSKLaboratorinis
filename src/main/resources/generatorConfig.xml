@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="CoursesDB" targetRuntime="MyBatis3Simple">
+    <context id="PurchasesDB" targetRuntime="MyBatis3Simple">
         <jdbcConnection driverClass="org.h2.Driver"
                         connectionURL="jdbc:h2:~/h2database/PurchasesDB;AUTO_SERVER=TRUE"
                         userId="admin"
